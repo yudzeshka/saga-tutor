@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       redux-saga-tutor{" "}
-      <button onClick={() => dispatch({ type: "CLICK" })}>click me</button>
+      <button onClick={() => dispatch({ type: "LOAD_DATA" })}>click me</button>
     </div>
   );
 }
