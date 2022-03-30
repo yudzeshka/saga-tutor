@@ -1,15 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { Provider } from "react-redux";
-import store from "./redux";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {Route, Switch} from 'react-router-dom';
+import {ConnectedRouter} from 'connected-react-router'
+import App from './pages/App';
+import store from './redux';
+import {history} from './redux/reducers';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  <Provider store={store}>
+      <ConnectedRouter history={history}>
+          <Switch>
+              <Route path='/' exact>
+                  <App />
+              </Route>
+          </Switch>
+      </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root')
 );

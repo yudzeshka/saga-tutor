@@ -1,24 +1,20 @@
-const initial = {
-  people: [],
-  planets: [],
-};
+import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
+import { createBrowserHistory } from "history";
+import peopleReducer from "./people";
 
-export default function reducer(state = initial, action) {
-  switch (action.type) {
-    case "SET_PEOPLE": {
-      return {
-        ...state,
-        people: [...state.people, ...action.payload],
-      };
-    }
-    case "SET_PLANETS": {
-      return {
-        ...state,
-        planets: [...state.planets, ...action.payload],
-      };
-    }
+export const history = createBrowserHistory();
 
-    default:
-      return state;
-  }
+const initial = {};
+
+export function appReducer(state = initial, action) {
+  return state;
 }
+
+const rootReducer = combineReducers({
+  app: appReducer,
+  people: peopleReducer,
+  router: connectRouter(history),
+});
+
+export default rootReducer;
